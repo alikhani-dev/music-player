@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- FONTAWESOME CDN -->
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<!-- Main style file -->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<title>music player</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<audio></audio>
+			<div class="bg-img">
+				<div class="cover"></div>
+				<div class="details">
+					<span id="artist">name music</span>
+					<span id="nameMusic">artist</span>
+				</div>
+				<div class="progress">
+					<div class="progressbar"><span></span></div>
+					<div class="time">
+						<span id="timeStart">00:00</span>
+						<span id="timeEnd">00:00</span>
+					</div>
+				</div>
+				<div class="controler">
+					<i data-action="random" class="fas fa-random"></i>
+					<i data-action="prev" class="fas fa-backward"></i>
+					<i data-action="play" class="fas fa-play"></i>
+					<i data-action="next" class="fas fa-forward"></i>
+					<i data-action="repeat" class="fas fa-sync-alt"></i>
+				</div>
+				<div class="playlist">
+				</div>
+			</div>
+		</div>
+		<template id="item"> 
+			<div class="item">
+				<i data-index="{index}" class="fas {fontawesome}"></i>
+				<div class="info">
+					<span>{artist}</span>
+					<span>{name}</span>
+				</div>
+				<div class="item-cover">
+					<img src="{cover}" alt="">
+				</div>
+			</div>
+		</template>
+		<script src="assets/js/class.js" as='script' ></script>
+		<script src="assets/js/app.js" as='script'></script>
+	</body>
+</html>
