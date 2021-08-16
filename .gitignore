@@ -5,4 +5,4 @@ assets/sass/
 *.scss.map
 ## read only main css
 *.css
-!assets/css/main.css
+!main.css
