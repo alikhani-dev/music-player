@@ -9,6 +9,7 @@
 - play random music
 - replay music
 - play list
+- change volume 
 ---  
 ## Technologies
 - vanila js
