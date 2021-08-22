@@ -3,9 +3,10 @@ class Player {
   constructor (_container, _sourse) {
     this.currentIndex = 0
     this.sourse = _sourse
-    this.playRandom= false
+    this.playRandom = false
     this.container = document.querySelector(_container)
     this.player = this.container.querySelector('audio')
+    this.progressbarvolume = this.container.querySelector('.volume .progress')
     this.seekbar = this.container.querySelector('.progressbar')
     this.btnPlay = this.container.querySelector(`[data-action='play']`)
     this.progressbar = this.container.querySelector('.progressbar span')
@@ -15,6 +16,7 @@ class Player {
     })
     this.appendItemList()
     this.changeSrc(0)
+    this.progressbarvolume.addEventListener('click', event => this.changevolume(event))
     this.seekbar.addEventListener('click', this.seek.bind(this))
     this.player.addEventListener('play', this.onplay.bind(this))
     this.player.addEventListener('ended', this.ended.bind(this))
@@ -23,6 +25,18 @@ class Player {
     this.player.addEventListener('loadedmetadata', () =>
       this.showDetail([this.player.duration])
     )
+  }
+  changevolume (e) {
+    const { target } = e
+    this.player.volume = e.offsetX / target.offsetWidth
+    target.firstElementChild.style.width = e.offsetX + 'px'
+    const icon = target.previousElementSibling
+    const volume = this.player.volume
+    if (volume < 0.5) {
+      icon.classList.replace('fa-volume-up', 'fa-volume-down')
+    } else {
+      icon.classList.replace('fa-volume-down', 'fa-volume-up')
+    }
   }
   showDetail (duration) {
     let sec = Math.floor(duration % 60)
@@ -44,26 +58,37 @@ class Player {
     this.player.pause()
   }
   repeat () {
-    this.container.querySelector(`[data-action='repeat']`).classList.toggle('active')
+    this.container
+      .querySelector(`[data-action='repeat']`)
+      .classList.toggle('active')
     this.player.loop = this.player.loop ? false : true
-    if(this.playRandom){
-      this.playRandom=false
-      document.querySelector('[data-action="random"]').classList.remove('active')
+    if (this.playRandom) {
+      this.playRandom = false
+      document
+        .querySelector('[data-action="random"]')
+        .classList.remove('active')
     }
   }
   random () {
-    this.container.querySelector(`[data-action='random']`).classList.toggle('active')
-    this.playRandom= this.playRandom ? false : true
-    if(this.player.loop){
-      this.container.querySelector(`[data-action='repeat']`).classList.remove('active')
-      this.player.loop=false
+    this.container
+      .querySelector(`[data-action='random']`)
+      .classList.toggle('active')
+    this.playRandom = this.playRandom ? false : true
+    if (this.player.loop) {
+      this.container
+        .querySelector(`[data-action='repeat']`)
+        .classList.remove('active')
+      this.player.loop = false
     }
- }
+  }
   onplay () {
     this.btnPlay.classList.replace('fa-play', 'fa-pause')
     this.btnPlay.dataset.action = 'pause'
-    document.querySelector('.bg-img .cover').style.animationPlayState ='running'
-    document.querySelector(`[data-index='${this.currentIndex}']`).classList.replace('fa-music','fa-compact-disc')
+    document.querySelector('.bg-img .cover').style.animationPlayState =
+      'running'
+    document
+      .querySelector(`[data-index='${this.currentIndex}']`)
+      .classList.replace('fa-music', 'fa-compact-disc')
   }
   onpause () {
     this.btnPlay.classList.replace('fa-pause', 'fa-play')
@@ -109,16 +134,21 @@ class Player {
           return index
         }
       })
-      item.querySelector('[data-index]').addEventListener('click',()=>
-      this.currentIndex !== index && this.goToSong(index)
+      item
+        .querySelector('[data-index]')
+        .addEventListener(
+          'click',
+          () => this.currentIndex !== index && this.goToSong(index)
         )
       container.appendChild(item)
     })
   }
-  removeOldIconPlay(){
-    document.querySelector(`.fa-compact-disc`).classList.replace('fa-compact-disc','fa-music')
+  removeOldIconPlay () {
+    document
+      .querySelector(`.fa-compact-disc`)
+      .classList.replace('fa-compact-disc', 'fa-music')
   }
-  goToSong(index){
+  goToSong (index) {
     this.removeOldIconPlay()
     this.currentIndex = index
     this.changeSrc(this.currentIndex)
@@ -135,44 +165,13 @@ class Player {
     this.showCurrentTime()
   }
   ended () {
-    if(this.playRandom){
-      this.currentIndex = Math.floor(Math.random() * (this.sourse.length - 0 + 1)+ 0)
+    if (this.playRandom) {
+      this.currentIndex = Math.floor(
+        Math.random() * (this.sourse.length - 0 + 1) + 0
+      )
       this.next()
-    }else{
+    } else {
       this.player.loop ? this.player.load() : this.next()
     }
   }
 }
-const playlist = [
-  {
-    src: 'https://dls.music-fa.com/tagdl/ati/Masih%20Arash%20-%20Remix%20Man%20Mazerat%20Mikhaam%20(128).mp3',
-    name: 'من معذرت میخوام',
-    artist: 'مسیح و آرش ',
-    cover: 'https://music-fa.com/wp-content/uploads/2020/11/Masih-Arash-Remix-Man-Mazerat-Mikhaam-Music-fa.com_.jpg'
-  },
-  {
-    src: 'https://dls.music-fa.com/tagdl/ati/Mehdi%20Ahmadvand%20-%20Remix%20Avaze%20Ghoo%20(128).mp3',
-    name: ' آواز قو',
-    artist: ' مهدی احمدوند',
-    cover: 'https://music-fa.com/wp-content/uploads/2021/07/Mehdi-Ahmadvand-Remix-Avaze-Ghoo-Music-fa.com_.jpg'
-  },
-  {
-    src: 'https://dls.music-fa.com/tagdl/ati/Mohsen%20EbrahimZade%20-%20Remix%20Taghche%20Bala%20(128).mp3',
-    name: 'طاقچه بالا',
-    artist: ' محسن ابراهیم زاده ',
-    cover: 'https://music-fa.com/wp-content/uploads/2021/07/Mohsen-EbrahimZade-Remix-Taghche-Bala-Music-fa.com_.jpg'
-  },
-  {
-    src: 'https://dls.music-fa.com/tagdl/ati/Armin%202AFM%20-%20Remix%20Naze%20Shastam%20(128).mp3',
-    name: ' ناز شستم',
-    artist: ' آرمین زارعی',
-    cover: 'https://music-fa.com/wp-content/uploads/2021/07/Armin-2AFM-Remix-Naze-Shastam-Music-fa.com_.jpg'
-  },
-  {
-    src: 'https://dls.music-fa.com/tagdl/ati/Masoud%20Sadeghloo%20-%20Remix%20Noghte%20Zaf%20(128).mp3',
-    name: 'مسعود صادقلو',
-    artist: ' نقطه ضعف',
-    cover: 'https://music-fa.com/wp-content/uploads/2021/07/Masoud-Sadeghloo-Remix-Noghte-Zaf-Music-fa.com_.jpg'
-  }
-]
-new Player('.wrapper', playlist)

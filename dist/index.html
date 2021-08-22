@@ -19,6 +19,10 @@
 		<div class="wrapper">
 			<audio></audio>
 			<div class="bg-img">
+				<div class="volume">
+					<i class="fas fa-volume-up"></i>
+					<span class="progress"><span class="progressbar"></span></span>
+				</div>
 				<div class="cover"></div>
 				<div class="details">
 					<span id="artist">name music</span>
@@ -38,11 +42,10 @@
 					<i data-action="next" class="fas fa-forward"></i>
 					<i data-action="repeat" class="fas fa-sync-alt"></i>
 				</div>
-				<div class="playlist">
-				</div>
+				<div class="playlist"></div>
 			</div>
 		</div>
-		<template id="item"> 
+		<template id="item">
 			<div class="item">
 				<i data-index="{index}" class="fas {fontawesome}"></i>
 				<div class="info">
@@ -50,10 +53,11 @@
 					<span>{name}</span>
 				</div>
 				<div class="item-cover">
-					<img src="{cover}" alt="">
+					<img src="{cover}" alt="" />
 				</div>
 			</div>
 		</template>
-		<script src="assets/js/main.js" as='script' ></script>
+		<script src="assets/js/class.js" as="script"></script>
+		<script src="assets/js/app.js" as="script"></script>
 	</body>
 </html>
