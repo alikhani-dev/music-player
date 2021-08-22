@@ -1,8 +1,7 @@
 # Music Player
 - - - 
 ## Demo
-![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/87765316/129528261-9b65b097-bc9c-4de0-b450-4212ad17313c.gif)
-![Screenshot (270)](https://user-images.githubusercontent.com/87765316/129526833-e2af626c-ac4f-4e6d-b392-66d507671fcc.png)
+![Rec 0014](https://user-images.githubusercontent.com/87765316/130356021-d874a78d-1991-499d-9bb4-703966815757.gif)
 - - - 
 ## features
 - play music
