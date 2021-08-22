@@ -109,7 +109,7 @@ body {
 .wrapper .bg-img .cover {
   z-index: -1;
   content: '';
-  top: 0;
+  top: 30px;
   position: absolute;
   height: 250px;
   width: 250px;
@@ -120,6 +120,43 @@ body {
           animation: rotate 10s infinite linear;
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
+}
+
+.wrapper .volume {
+  margin: 10px;
+  width: 100%;
+  padding-left: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .volume i {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.wrapper .volume .progress {
+  background-color: rgba(170, 170, 170, 0.5);
+  width: 75%;
+  height: 3px;
+  margin: 0 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.wrapper .volume .progress .progressbar {
+  z-index: -1;
+  background-color: #333;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .wrapper .details {
@@ -134,7 +171,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  margin: 50px 0;
+  margin: 35px 0;
   color: #fff;
 }
 
@@ -193,7 +230,7 @@ body {
 }
 
 .wrapper .controler {
-  margin-top: 15px;
+  margin-top: 35px;
 }
 
 .wrapper .controler i {

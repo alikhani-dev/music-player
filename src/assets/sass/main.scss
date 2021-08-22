@@ -1,7 +1,7 @@
 @import 'reset';
 @import 'public';
-$wrapper-bg : #ebebeb;
-$wrapper-text : #333;
+$wrapper-bg: #ebebeb;
+$wrapper-text: #333;
 body {
 	// font-family: 'Secular One', sans-serif;
 	font-family: IRANSans;
@@ -17,7 +17,7 @@ body {
 	background-color: $wrapper-bg;
 	color: $wrapper-text;
 	border-radius: 3px;
-	box-shadow: 0 0 14px 3px rgba($color: #000000, $alpha: .28);
+	box-shadow: 0 0 14px 3px rgba($color: #000000, $alpha: 0.28);
 	.bg-img {
 		margin-top: 10px;
 		display: flex;
@@ -29,7 +29,7 @@ body {
 		.cover {
 			z-index: -1;
 			content: '';
-			top: 0;
+			top: 30px;
 			position: absolute;
 			height: 250px;
 			width: 250px;
@@ -40,12 +40,41 @@ body {
 			animation-play-state: paused;
 		}
 	}
+	.volume {
+		margin: 10px;
+		width: 100%;
+		padding-left: 30px;
+		display: flex;
+		align-items: center;
+		i {
+			font-size: 1.2rem;
+			cursor: pointer;
+		}
+		.progress {
+			background-color: rgba($color: #aaa, $alpha: 0.5);
+			width: 75%;
+			height: 3px;
+			margin: 0 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			position: relative;
+			.progressbar {
+				z-index: -1;
+				background-color: #333;
+				height: inherit;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+			}
+		}
+	}
 	.details {
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 		width: 100%;
-		margin: 50px 0;
+		margin: 35px 0;
 		color: #fff;
 		span {
 			text-shadow: 1px ​1px 6px #000;
@@ -88,7 +117,7 @@ body {
 		}
 	}
 	.controler {
-		margin-top: 15px;
+		margin-top: 35px;
 		i {
 			user-select: none;
 			font-size: 1.3rem;
@@ -107,14 +136,13 @@ body {
 		width: 100%;
 		height: 237px;
 		.item {
-
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 			border-bottom: 1px solid #aaa;
 			i {
 				padding: 10px 20px;
-				&.fa-music{
+				&.fa-music {
 					cursor: pointer;
 				}
 			}
