@@ -7,7 +7,8 @@ class Player {
     this.container = document.querySelector(_container)
     this.player = this.container.querySelector('audio')
     this.progressbarvolume = this.container.querySelector('.volume .progress')
-    this.seekbar = this.container.querySelector('.progressbar')
+    this.seekbar = this.container.querySelector('#time .progressbar')
+    console.log(this.seekbar);
     this.btnPlay = this.container.querySelector(`[data-action='play']`)
     this.progressbar = this.container.querySelector('.progressbar span')
     this.container.addEventListener('click', e => {
@@ -16,7 +17,9 @@ class Player {
     })
     this.appendItemList()
     this.changeSrc(0)
-    this.progressbarvolume.addEventListener('click', event => this.changevolume(event))
+    this.progressbarvolume.addEventListener('click', event =>
+      this.changevolume(event)
+    )
     this.seekbar.addEventListener('click', this.seek.bind(this))
     this.player.addEventListener('play', this.onplay.bind(this))
     this.player.addEventListener('ended', this.ended.bind(this))
