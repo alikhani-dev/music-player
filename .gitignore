@@ -1,8 +1,0 @@
-### Sass ###
-assets/sass/
-*.css.map
-*.sass.map
-*.scss.map
-## read only main css
-*.css
-!main.css
