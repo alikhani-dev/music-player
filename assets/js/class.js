@@ -1,26 +1,25 @@
 'use strict'
 class Player {
-  constructor (_container, _sourse) {
+  constructor (_container, _source) {
     this.currentIndex = 0
-    this.sourse = _sourse
+    this.source = _source
     this.playRandom = false
     this.container = document.querySelector(_container)
     this.player = this.container.querySelector('audio')
-    this.progressbarvolume = this.container.querySelector('.volume .progress')
-    this.seekbar = this.container.querySelector('#time .progressbar')
-    console.log(this.seekbar);
+    this.progressBarVolume = this.container.querySelector('.volume .progress')
+    this.seekBar = this.container.querySelector('#time .progressBar')
     this.btnPlay = this.container.querySelector(`[data-action='play']`)
-    this.progressbar = this.container.querySelector('.progressbar span')
+    this.progressBar = this.container.querySelector('.progressBar span')
     this.container.addEventListener('click', e => {
       const action = e.target.dataset.action
       action && action in this && this[action]()
     })
     this.appendItemList()
     this.changeSrc(0)
-    this.progressbarvolume.addEventListener('click', event =>
-      this.changevolume(event)
+    this.progressBarVolume.addEventListener('click', event =>
+      this.changeVolume(event)
     )
-    this.seekbar.addEventListener('click', this.seek.bind(this))
+    this.seekBar.addEventListener('click', this.seek.bind(this))
     this.player.addEventListener('play', this.onplay.bind(this))
     this.player.addEventListener('ended', this.ended.bind(this))
     this.player.addEventListener('pause', this.onpause.bind(this))
@@ -29,7 +28,7 @@ class Player {
       this.showDetail([this.player.duration])
     )
   }
-  changevolume (e) {
+  changeVolume (e) {
     const { target } = e
     this.player.volume = e.offsetX / target.offsetWidth
     target.firstElementChild.style.width = e.offsetX + 'px'
@@ -47,12 +46,12 @@ class Player {
     if (sec < 10) sec = '0' + sec
     if (min < 10) min = '0' + min
     timeEnd.textContent = min + ':' + sec
-    const sourse = this.sourse[this.currentIndex]
-    document.querySelector('#artist').textContent = sourse.artist
-    document.querySelector('#nameMusic').textContent = sourse.name
+    const source = this.source[this.currentIndex]
+    document.querySelector('#artist').textContent = source.artist
+    document.querySelector('#nameMusic').textContent = source.name
     document.querySelector(
       '.bg-img .cover'
-    ).style.backgroundImage = `url(${sourse.cover})`
+    ).style.backgroundImage = `url(${source.cover})`
   }
   play () {
     this.player.play()
@@ -100,7 +99,7 @@ class Player {
   }
   showCurrentTime () {
     const { currentTime, duration } = this.player
-    this.progressbar.style.width = `${(currentTime / duration) * 100}%`
+    this.progressBar.style.width = `${(currentTime / duration) * 100}%`
     let sec = Math.floor(currentTime % 60)
     let min = Math.floor(currentTime / 60)
     if (sec < 10) sec = '0' + sec
@@ -109,7 +108,7 @@ class Player {
   }
   seek (e) {
     this.player.currentTime =
-      (e.offsetX * this.player.duration) / this.seekbar.offsetWidth
+      (e.offsetX * this.player.duration) / this.seekBar.offsetWidth
   }
   next () {
     this.removeOldIconPlay()
@@ -124,11 +123,11 @@ class Player {
   appendItemList () {
     const template = document.querySelector('#item')
     const container = document.querySelector('.playlist')
-    this.sourse.forEach((sourse, index) => {
+    this.source.forEach((source, index) => {
       const item = template.content.cloneNode(true).firstElementChild
       item.innerHTML = item.innerHTML.replace(/{(\w+)}/g, (_, key) => {
-        if (key in sourse) {
-          return sourse[key]
+        if (key in source) {
+          return source[key]
         } else if (this.currentIndex === index && key == 'fontawesome') {
           return 'fa-compact-disc'
         } else if (key == 'fontawesome') {
@@ -159,18 +158,18 @@ class Player {
   }
   changeSrc (index) {
     this.currentIndex =
-      index > this.sourse.length - 1
+      index > this.source.length - 1
         ? (this.currentIndex = 0)
         : index == -1
-        ? (this.currentIndex = this.sourse.length - 1)
+        ? (this.currentIndex = this.source.length - 1)
         : this.currentIndex
-    this.player.src = this.sourse[this.currentIndex]['src']
+    this.player.src = this.source[this.currentIndex]['src']
     this.showCurrentTime()
   }
   ended () {
     if (this.playRandom) {
       this.currentIndex = Math.floor(
-        Math.random() * (this.sourse.length - 0 + 1) + 0
+        Math.random() * (this.source.length - 0 + 1) + 0
       )
       this.next()
     } else {
