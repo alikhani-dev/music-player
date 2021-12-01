@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,8 +11,13 @@
 			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
 			crossorigin="anonymous"
 		/>
+		<!-- CDN FONT Vazir -->
+        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
 		<!-- Main style file -->
-		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/main.css" type="text/css" />
+		<!-- Script  -->
+		<script defer src="./assets/js/class.js" as="script"></script>
+		<script defer src="./assets/js/data.js" as="script"></script>
 		<title>music player</title>
 	</head>
 	<body>
@@ -21,7 +26,7 @@
 			<div class="bg-img">
 				<div class="volume">
 					<i class="fas fa-volume-up"></i>
-					<span class="progress"><span class="progressbar"></span></span>
+					<span class="progress"><span class="progressBar"></span></span>
 				</div>
 				<div class="cover"></div>
 				<div class="details">
@@ -29,7 +34,7 @@
 					<span id="nameMusic">artist</span>
 				</div>
 				<div class="progress" id="time">
-					<div class="progressbar"><span></span></div>
+					<div class="progressBar"><span></span></div>
 					<div class="time">
 						<span id="timeStart">00:00</span>
 						<span id="timeEnd">00:00</span>
@@ -57,7 +62,5 @@
 				</div>
 			</div>
 		</template>
-		<script src="./assets/js/class.js" as="script"></script>
-		<script src="./assets/js/app.js" as="script"></script>
 	</body>
 </html>
