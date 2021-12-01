@@ -1,11 +1,40 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'IRANSans';
-  font-weight: normal;
-  font-style: normal;
-  src: url("../font/IRANSans.eot");
-  src: url("../font/IRANSans.eot?#iefix") format("embedded-opentype"), url("../font/IRANSans.svg#IRANSans") format("svg"), url("../font/IRANSans.ttf") format("truetype"), url("../font/IRANSans.woff") format("woff"), url("../font/IRANSans.woff2") format("woff2");
-  font-display: fallback;
+    font-family: Vazir;
+    src: url('Vazir-Bold.eot');
+    src: url('Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+         url('Vazir-Bold.woff2') format('woff2'),
+         url('Vazir-Bold.woff') format('woff'),
+         url('Vazir-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir-Black.eot');
+    src: url('Vazir-Black.eot?#iefix') format('embedded-opentype'),
+         url('Vazir-Black.woff2') format('woff2'),
+         url('Vazir-Black.woff') format('woff'),
+         url('Vazir-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir-Light.eot');
+    src: url('Vazir-Light.eot?#iefix') format('embedded-opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir-Thin.eot');
+    src: url('Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+         url('Vazir-Thin.woff2') format('woff2'),
+         url('Vazir-Thin.woff') format('woff'),
+         url('Vazir-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
 }
 
 * {
@@ -63,7 +92,7 @@
 }
 
 body {
-  font-family: IRANSans;
+    font-family: 'Vazir', sans-serif;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,8 +143,6 @@ body {
   height: 250px;
   width: 250px;
   border-radius: 100%;
-  background: url("../img/1.png") no-repeat center;
-  background-size: contain;
   -webkit-animation: rotate 10s infinite linear;
           animation: rotate 10s infinite linear;
   -webkit-animation-play-state: paused;
@@ -149,7 +176,7 @@ body {
   position: relative;
 }
 
-.wrapper .volume .progress .progressbar {
+.wrapper .volume .progress .progressBar {
   z-index: -1;
   background-color: #333;
   height: inherit;
@@ -196,7 +223,7 @@ body {
   width: 85%;
 }
 
-.wrapper .progress .progressbar {
+.wrapper .progress .progressBar {
   cursor: pointer;
   position: relative;
   height: 4px;
@@ -205,7 +232,7 @@ body {
   background-color: #585858;
 }
 
-.wrapper .progress .progressbar span {
+.wrapper .progress .progressBar span {
   content: '';
   width: 0%;
   background-color: #afafaf;
