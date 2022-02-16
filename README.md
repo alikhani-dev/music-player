@@ -1,19 +1,21 @@
-# Music Player
-- - - 
-## Demo
-![Rec 0014](https://user-images.githubusercontent.com/87765316/130356021-d874a78d-1991-499d-9bb4-703966815757.gif)
-- - - 
-## features
-- play music
-- play random music
-- replay music
-- play list
-- change volume 
----  
+## Preview
+
+![Preview](https://user-images.githubusercontent.com/87765316/154227910-17e31aac-bbba-423b-a7ca-273767c8dce7.png)
+
+## Features
+
+- [x] Play music
+- [x] Play list
+- [x] Play random music
+- [x] Replay music
+- [x] Change volume
+
 ## Technologies
-- vanila js
-- sass => css
-- --
-## Contact with Me
-[instagram](https://www.instagram.com/alikhani_developer/)
-[linkedin](https://www.linkedin.com/in/amir-hossein-agha-alikhani-060a88217/)
+
+**Client:** Pure js ( vanilla js)
+
+## Contact US
+
+- Email: [alikhani.dev@gmail.com](mailto:alikhani.dev@gmail.com)
+- Linkedin: [Alikhani](www.linkedin.com/in/amir-hossein-agha-alikhani-060a88217)
+- Instagram: [@alikhani_developer](https://www.instagram.com/alikhani_developer/)
